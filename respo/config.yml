@@ -1,0 +1,18 @@
+server:
+  port: 8768
+eureka:
+  client:
+    service-url:
+       defaultZone: http://localhost:8761/eureka/
+spring:
+  application:
+    name: service-zuul
+#路由配置 以/ribbon/**开头的请求都会转发到sevice-ribbon服务，同理以/fegin/**开头的请求都会转发到service-feign服务
+zuul:
+  routes:
+    ribbon:
+      path: /ribbon/**
+      serviceId:  sevice-ribbon
+    fegin:
+      path: /fegin/**
+      serviceId:  service-feign
